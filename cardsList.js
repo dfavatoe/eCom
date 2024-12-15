@@ -7,8 +7,8 @@ const displayProducts = (productsArray) => {
 
     for (let i = 0; i < productsArray.length; i++) {
         const cardContainer = document.createElement("div");
-        cardContainer.setAttribute("class", "col-sm-6 col-md-4 col-lg-2"); // or ..classList.add("card")
-        cardContainer.classList.add("card");
+        cardContainer.setAttribute("class", "col-sm-6 col-md-4 col-lg-2"); 
+        cardContainer.classList.add("card"); // or ..classList.add("card")
         // cardContainer.setAttribute("style", "width: 18rem;");
 
         const cardImage = document.createElement("img");

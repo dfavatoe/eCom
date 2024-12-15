@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
 :root {
     --primary: #ffd43b;
     --secondary: #7950f2;
@@ -5,8 +11,10 @@
 }
 
 h1 {
-    color: var(--primary);
-    /* text-align: center;
+    color: var(--secondary);
+    text-align: center;
+    margin: 40px;
+    /* 
     position: absolute;
     top: 50%;
     left: 50%;
@@ -67,7 +75,21 @@ nav a {
 
 /* Cards */
 .card {
-    background-color: aqua;
+    max-height: 350px;
+    overflow:scroll;
+    background-color: var(--fast-white);
+    border: solid 10px #7950f2 ;
     margin: 10px;
 }
 
+/* Search Page */
+/* Dropdown Box */
+.dropdown-box {
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 40px;
+}
+
+.dropdown {
+    margin-inline: 10px;
+}

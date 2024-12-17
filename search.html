@@ -57,12 +57,62 @@
     </div>
       <h1>Products</h1>
 
-      <div class="dropdown-box">
+      
+      <div class="container">
+        <!-- Search Field -->
+         <input type="text"
+         class="form-control"
+         placeholder="Search product..."
+         aria-label="Product"
+         aria-describedby="basic-addon1"
+         id="product-search"
+         value=""
+         >
+
+        <!-- Category Dropdown-->
+        <label for="category">Category: </label>
+        <select name="category" id="categoryDropdown">
+          <option value="all">All</option>
+        </select>
+
+        <!-- Price Range Slider-->
+        <div class="slider-container">
+          <div class="price-slider">
+          </div>
+      </div>
+
+        <label for="price">Price: </label>
+        <div class="range-input">
+          <input type="range" name="range"
+                  class="min-range"
+                  min="0"
+                  max="1000"
+                  value="250"
+                  step="1">
+          <input type="range"
+                  class="max-range"
+                  min="0"
+                  max="1000"
+                  value="250"
+                  step="1">
+        </div>
+
+        <!-- <select name="price" id="priceDropdown">
+          <option value="all">All</option>
+          <option value="0-50">All</option>
+        </select> -->
+      </div>
+      
+
+
+      <!-- <div class="dropdown-box">
         <div class="dropdown" style="display: inline;">
           <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             Categories
           </button>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" id="categoryDropdown">
+            <option class="dropdown-item" value="all">All</option>
+            
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -79,10 +129,7 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </div>
-      </div>
-
-      
-
+      </div> -->
 
       <!-- <div class="titles-list"></div> -->
 
@@ -103,9 +150,16 @@
       integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
       crossorigin="anonymous"
     ></script>
-    <script src="fetchCards.js"></script>
+  
+    <!-- Fetch Data Build Cards use Filters -->
+    <script src="main_test.js"></script>
+     <!-- <script src="main.js"></script> -->
+    <!-- Fetch Data and Build Cards -->
+    <!-- <script src="fetchCards.js"></script> -->
+    <!-- Build Cards from offline file (fakeProducs.js) -->
     <!-- <script src="fakeProducts.js"></script>
     <script src="cardsList.js"></script> -->
+    <!-- Create a product's list based on titles from offline file (fakeProducs.js) -->
     <!-- <script src="productsList.js"></script> -->
   </body>
 </html>

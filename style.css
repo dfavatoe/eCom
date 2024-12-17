@@ -83,13 +83,24 @@ nav a {
 }
 
 /* Search Page */
+/* Search Field */
+#product-search {
+    margin: 20px;
+    width: 250px;
+    display: inline-block;
+}
+
 /* Dropdown Box */
-.dropdown-box {
+.container {
     text-align: center;
     margin: 20px;
     margin-bottom: 40px;
+    display: inline-block;
 }
 
 .dropdown {
     margin-inline: 10px;
+    display: inline-block;
 }
+
+

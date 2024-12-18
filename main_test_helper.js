@@ -23,38 +23,44 @@ function getData() {
         cardsContainer.innerHTML="";
 
         for (let i = 0; i < products.length; i++) {
-            const cardContainer = document.createElement("div");
-            cardContainer.setAttribute("class", "col-sm-6 col-md-4 col-lg-2");
-            cardContainer.classList.add("card");
-            // cardContainer.setAttribute("style", "min-width: 18rem;");
+            // if (products[i].price >= 200 && products[i].price <= 800)
+            if (isInCheckboxRange(products[i].price)) 
+             {
+                const cardContainer = document.createElement("div");
+                cardContainer.setAttribute("class", "col-sm-6 col-md-4 col-lg-2");
+                cardContainer.classList.add("card");
+                // cardContainer.setAttribute("style", "min-width: 18rem;");
 
-            const cardImage = document.createElement("img");
-            cardImage.setAttribute("src", products[i].image);
-            cardImage.setAttribute("alt", "picture of the product");
+                const cardImage = document.createElement("img");
+                cardImage.setAttribute("src", products[i].image);
+                cardImage.setAttribute("alt", "picture of the product");
 
-            const cardBody = document.createElement("div");
-            cardBody.setAttribute("class", "card-body");
+                const cardBody = document.createElement("div");
+                cardBody.setAttribute("class", "card-body");
 
-            const cardTitle = document.createElement("h5");
-            cardTitle.setAttribute("class", "card-title");
-            cardTitle.innerText = products[i].title;
+                const cardTitle = document.createElement("h5");
+                cardTitle.setAttribute("class", "card-title");
+                cardTitle.innerText = products[i].title;
 
-            const cardDescription = document.createElement("p");
-            cardDescription.setAttribute("class", "card-text");
-            cardDescription.innerText = products[i].description;
+                const cardDescription = document.createElement("p");
+                cardDescription.setAttribute("class", "card-text");
+                cardDescription.innerText = products[i].description;
 
-            const cardPrice = document.createElement("p");
-            cardPrice.setAttribute("class", "card-price");
-            cardPrice.innerText = products[i].price + " €";
+                const cardPrice = document.createElement("p");
+                cardPrice.setAttribute("class", "card-price");
+                cardPrice.innerText = products[i].price + " €";
+                
+                cardContainer.appendChild(cardImage); //Attention append the image to the cardContainer and not cardsContainer
+                cardContainer.appendChild(cardBody);
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardDescription);
+                cardBody.appendChild(cardPrice);
+                cardsContainer.appendChild(cardContainer); 
+            }
             
-            cardContainer.appendChild(cardImage); //Attention append the image to the cardContainer and not cardsContainer
-            cardContainer.appendChild(cardBody);
-            cardBody.appendChild(cardTitle);
-            cardBody.appendChild(cardDescription);
-            cardBody.appendChild(cardPrice);
-            cardsContainer.appendChild(cardContainer); 
         }
     }
+    
 
     //* 3. Generate Dropdown Filter options
         const createDropdown = (products) => {
@@ -171,7 +177,7 @@ function getData() {
         const checkboxes = document.querySelectorAll("input[type='checkbox']:checked");
         // console.log("checkboxes: ", checkboxes);
         const checkboxesArray = Array.from(checkboxes);
-        console.log("checkboxesArray: ", checkboxesArray);  //! checboxes was created with "querySelectorAll, then it is a NodeList an cannot be used with the .map() method before being converted to an Array."
+        console.log("checkboxesArray: ", checkboxesArray);  //! checkboxes was created with "querySelectorAll, then it is a NodeList an cannot be used with the .map() method before being converted to an Array."
         const checkboxesValues = checkboxesArray.map((checkbox) => {
             return  Number.parseInt(checkbox.value);
         })
@@ -197,21 +203,23 @@ function getData() {
 getData();
 
 //* Helper functions
-// const isInCheckboxRange = (product) => {
-//     const checkboxes = document.querySelectorAll("input[type='checkbox']:checked");
+const isInCheckboxRange = (product) => {
+    const checkboxes = document.querySelectorAll("input[type='checkbox']:checked");
     
-//     const checkboxesArray = Array.from(checkboxes);
+    const checkboxesArray = Array.from(checkboxes);
      
-//     const checkboxesValues = checkboxesArray.map((checkbox) => {
-//         return  Number.parseInt(checkbox.value);
-//     })
+    const checkboxesValues = checkboxesArray.map((checkbox) => {
+        return  Number.parseInt(checkbox.value);
+    })
+    // console.log("checkboxesValues: ", checkboxesValues)
 
-//     for (let i = 0; i < checkboxesValues.length; i++) {
-//         if (checkboxesValues[i] <= product.price <= checkboxesValues[i + 1]) {
-//             return true;
-//         } else {
-//             false;
-//         }
+    for (let i = 0; i < checkboxesValues.length; i++) {
+        if (checkboxesValues[i] <= product && 
+            product >= checkboxesValues[i + 1]) {
+            return true;
+        } else {
+            false;
+        }
         
-//     }
-// }
+    }
+}

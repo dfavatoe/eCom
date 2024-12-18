@@ -103,4 +103,12 @@ nav a {
     display: inline-block;
 }
 
+/* Price Checkboxes */
+
+.price-checkboxes {
+    text-align: center;
+    margin: 20px;
+    display: block;
+    text-align: left;
+}
 

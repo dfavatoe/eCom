@@ -126,12 +126,11 @@ function getData() {
         const filterBySearch = (products) => {
             const searchedTitle = document.querySelector(".form-control").value;
             // console.log("searched product: ", searchedTitle);
-            const regex = new RegExp(searchedTitle, "i");
+            const pattern = new RegExp(searchedTitle, "i");
             const filteredProductTitles =  products.filter((product) => {
-
-                if (regex.test(product.title)) {
-                    return product.title;
-                }
+                return pattern.test(product.title);
+                // return (product.title).match(pattern);
+                // }
             })
 
             displayProducts(filteredProductTitles);

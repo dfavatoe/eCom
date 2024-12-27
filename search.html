@@ -68,6 +68,7 @@
          id="product-search"
          value=""
          >
+      
 
         <!-- Category Dropdown-->
         <label for="category">Category: </label>
@@ -76,85 +77,28 @@
         </select>
 
         <!-- Price Checkboxes-->
-         <div class="price-checkboxes">
+        <div class="price-checkboxes">
           <h4>Price: </h4>
-          <input type="checkbox" id="price1" name="price1" value="200">
+          <input type="checkbox" id="price1" name="price1" value="0,200">
           <label for="price1">0-200 EUR</label><br>
-          <input type="checkbox" id="price2" name="price2" value="400">
+          <input type="checkbox" id="price2" name="price2" value="200,400">
           <label for="price2">200-400 EUR</label><br>
-          <input type="checkbox" id="price3" name="price3" value="600">
+          <input type="checkbox" id="price3" name="price3" value="400,600">
           <label for="price3">400-600 EUR</label><br>
-          <input type="checkbox" id="price4" name="price4" value="800">
+          <input type="checkbox" id="price4" name="price4" value="600,800">
           <label for="price4">600-800 EUR</label><br>
-          <input type="checkbox" id="price5" name="price5" value="1000">
+          <input type="checkbox" id="price5" name="price5" value="800,1000">
           <label for="price5">800-1000 EUR</label><br>
-         </div>
+        </div>
          
 
-        <!-- Price Range Slider-->
-        <!-- <div class="slider-container">
-          <div class="price-slider">
-          </div>
-      </div>
-
-        <label for="price">Price: </label>
-        <div class="range-input">
-          <input type="range" name="range"
-                  class="min-range"
-                  min="0"
-                  max="1000"
-                  value="250"
-                  step="1">
-          <input type="range"
-                  class="max-range"
-                  min="0"
-                  max="1000"
-                  value="250"
-                  step="1">
-        </div> -->
-
-        <!-- <select name="price" id="priceDropdown">
-          <option value="all">All</option>
-          <option value="0-50">All</option>
-        </select> -->
-      </div>
-      
-
-
-      <!-- <div class="dropdown-box">
-        <div class="dropdown" style="display: inline;">
-          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Categories
-          </button>
-          <ul class="dropdown-menu" id="categoryDropdown">
-            <option class="dropdown-item" value="all">All</option>
-            
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+        <div class="container text-center">
+          <div class="row"></div>
         </div>
 
-        <div class="dropdown" style="display: inline;">
-          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Price
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </div>
-      </div> -->
+      </div>
 
-      <!-- <div class="titles-list"></div> -->
-
-      <div class="container text-center">
-        <div class="row"></div>
     </div>
-
-    
-
 
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
@@ -168,9 +112,7 @@
     ></script>
   
     <!-- Fetch Data Build Cards use Filters -->
-    <script src="main_test_helper.js"></script>
-    <!-- <script src="main_test.js"></script> -->
-     <!-- <script src="main.js"></script> -->
+    <script src="main.js"></script>
     <!-- Fetch Data and Build Cards -->
     <!-- <script src="fetchCards.js"></script> -->
     <!-- Build Cards from offline file (fakeProducs.js) -->

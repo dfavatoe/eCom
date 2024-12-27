@@ -4,13 +4,10 @@ function getData() {
     fetch("https://fakestoreapi.com/products").then((response) => 
     {
         console.log("response: ", response);
-        // const resolvedResponse = response.json();
-        // console.log("resolvedResponse: ", resolvedResponse);
         return response.json();
     }).then((result) => {
         console.log("result: ", result);
         const products = result;
-        // buildCards(result);
         controller(products);
     }).catch((error) => {
         console.log("error: ", error);
@@ -21,39 +18,43 @@ function getData() {
     const displayProducts = (products) => {
         const cardsContainer = document.querySelector(".row");
         cardsContainer.innerHTML="";
-        for (let i = 0; i < products.length; i++) {
-            const cardContainer = document.createElement("div");
-            cardContainer.setAttribute("class", "col-sm-6 col-md-4 col-lg-2");
-            cardContainer.classList.add("card");
-            // cardContainer.setAttribute("style", "min-width: 18rem;");
 
-            const cardImage = document.createElement("img");
-            cardImage.setAttribute("src", products[i].image);
-            cardImage.setAttribute("alt", "picture of the product");
-
-            const cardBody = document.createElement("div");
-            cardBody.setAttribute("class", "card-body");
-
-            const cardTitle = document.createElement("h5");
-            cardTitle.setAttribute("class", "card-title");
-            cardTitle.innerText = products[i].title;
-
-            const cardDescription = document.createElement("p");
-            cardDescription.setAttribute("class", "card-text");
-            cardDescription.innerText = products[i].description;
-
-            const cardPrice = document.createElement("p");
-            cardPrice.setAttribute("class", "card-price");
-            cardPrice.innerText = products[i].price + " €";
+        products.forEach((product, i) => {
             
-            cardContainer.appendChild(cardImage); //Attention append the image to the cardContainer and not cardsContainer
-            cardContainer.appendChild(cardBody);
-            cardBody.appendChild(cardTitle);
-            cardBody.appendChild(cardDescription);
-            cardBody.appendChild(cardPrice);
-            cardsContainer.appendChild(cardContainer); 
-        }
+                const cardContainer = document.createElement("div");
+                cardContainer.setAttribute("class", "col-sm-6 col-md-4 col-lg-2");
+                cardContainer.classList.add("card");
+
+                const cardImage = document.createElement("img");
+                cardImage.setAttribute("src", product.image);
+                cardImage.setAttribute("alt", "picture of the product");
+
+                const cardBody = document.createElement("div");
+                cardBody.setAttribute("class", "card-body");
+
+                const cardTitle = document.createElement("h5");
+                cardTitle.setAttribute("class", "card-title");
+                cardTitle.innerText = product.title;
+
+                const cardDescription = document.createElement("p");
+                cardDescription.setAttribute("class", "card-text");
+                cardDescription.innerText = product.description;
+
+                const cardPrice = document.createElement("p");
+                cardPrice.setAttribute("class", "card-price");
+                cardPrice.innerText = product.price + " €";
+                
+                //append elements to correspondent containers
+                cardContainer.appendChild(cardImage); 
+                cardContainer.appendChild(cardBody);
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardDescription);
+                cardBody.appendChild(cardPrice);
+                cardsContainer.appendChild(cardContainer); 
+          
+        });
     }
+    
 
     //* 3. Generate Dropdown Filter options
         const createDropdown = (products) => {
@@ -61,10 +62,8 @@ function getData() {
             const categories = products.map((product) => {
                 return product.category;
             });
-            // console.log("categories: ", categories);
             
             const uniqueCategories = [...new Set(categories)].sort();
-            // console.log("uniqueCategories: ", uniqueCategories);
 
             uniqueCategories.forEach((categoryName) => {
                 const option = document.createElement("option");
@@ -74,12 +73,11 @@ function getData() {
 
                 dropdown.appendChild(option);
             })
-
-
         }
 
 
     //* 4. Controller Function
+
     function controller(products) {
         //build Cards with the data
         displayProducts(products);
@@ -87,71 +85,81 @@ function getData() {
         createDropdown(products);
         // set event Listeners
         setEventListeners(products);
-        //Search Event Listener
-        addEventListener(products);
-
+        // isInCheckboxRange(products);
     }
 
     //* 5. add Event Listeners
-    //On Option change, filter data
+
+    //Dropdown eventListener
     const setEventListeners = (products) => {
         const categoryDropdown = document.querySelector("#categoryDropdown");
         categoryDropdown.addEventListener("change", (event) => {
             // console.log("option selected", event.target.value);
-            filterByDropDown(products);
-        }); //! change event didn't work with Bootstrap's button configuration (<ul> instead of <select>)
-        
-    }
-
-    //Search eventListener
-    const addEventListener = (products) => {
-        const input = document.querySelector(".form-control");
-        input.addEventListener("input", (event) => {
-            // console.log("i am typing");
-            // console.log("event input: ", event.target.value);
+            combinedFilters(products);
         });
 
+        //Search eventListener
+        const input = document.querySelector(".form-control");
+
         input.addEventListener("keydown", (event) => {  
-            console.log("event keydown: ", event.key);
+            // console.log("event keydown: ", event.key);
             if(event.key === "Enter") {
-                filterBySearch(products);
+                combinedFilters(products);
             }
+        });
+
+        //Price Checkbox eventListener
+        const checkboxes = document.querySelectorAll("input[type='checkbox']");
+        // console.log("checkboxes: ", checkboxes);
+        checkboxes.forEach((checkbox) => {
+            checkbox.addEventListener("change", () => {
+                // console.log("checkbox selected");
+                combinedFilters(products);
+                
+            });
+        });
+    }
+    
+
+    //* 6. Combined Filters
+        
+    const combinedFilters = (products) => {
+
+        //get checkboxes values
+        //create a NodeList of the selected checkboxes
+        const checkboxes = document.querySelectorAll("input[type='checkbox']:checked");
+        console.log("checkboxes: ", checkboxes);
+        //transform the NodeList into an Array of selected checkboxes
+        const checkboxesArray = Array.from(checkboxes);
+            console.log("checkboxesArray: ", checkboxesArray);
+        //map the values of the Array into a new Array just with the selected checkboxes values in integers
+        const checkboxesValues = checkboxesArray.map((checkbox) => {
+            // split the string values using the comma as the splitter
+            const stringArray = checkbox.value.split(",");
+            //return a number array from the previous string's value
+            return stringArray.map(Number);
+            })
+            console.log("checkboxesValues: ", checkboxesValues);    
+        
+        //get category's value
+        const selectedCategory = document.querySelector("#categoryDropdown").value;
+
+        //get search title's value
+        const searchedTitle = document.querySelector(".form-control").value;
+        // create a case-insensitive pattern/regular-expression of the searched title
+        const pattern = new RegExp(searchedTitle, "i");
+        // console.log("categoryDropdownValue, searchedTitleValue: ", selectedCategory, searchedTitle);
+
+        //return a filtered array based on the conditions established in the block
+        const filteredProducts = products.filter((product) => {
+            return  (selectedCategory === product.category || selectedCategory === "all") && (pattern.test(product.title))
+            && (checkboxesValues.some(([low, high]) => product.price >= low && product.price <= high) || checkboxes.length < 1);
+            
         })
 
-
-    }
-
-    //* 6. Filter by Search
-        //get search/input value
-        const filterBySearch = (products) => {
-            const searchedTitle = document.querySelector(".form-control").value;
-            // console.log("searched product: ", searchedTitle);
-            const pattern = new RegExp(searchedTitle, "i");
-            const filteredProductTitles =  products.filter((product) => {
-                return pattern.test(product.title);
-                // return (product.title).match(pattern);
-                // }
-            })
-
-            displayProducts(filteredProductTitles);
-        }
-
-
-
-
-    //* 7. Filter by Dropdown
-        //get dropdown value
-        const filterByDropDown = (products) => {
-            const selectedCategory = document.querySelector("#categoryDropdown").value;
-            // console.log("option selected", selectedCategory);
-
-            const filteredProducts = products.filter((product) => {
-                return (selectedCategory === product.category || selectedCategory === "all");
-            })
-
-            displayProducts(filteredProducts);
-        }
-}
-
-
+        displayProducts(filteredProducts);
+    };
+    
+};
+        
 getData();

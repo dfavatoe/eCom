@@ -22,34 +22,80 @@ function getData() {
         products.forEach((product, i) => {
             
                 const cardContainer = document.createElement("div");
-                cardContainer.setAttribute("class", "col-sm-6 col-md-4 col-lg-2");
-                cardContainer.classList.add("card");
+                cardContainer.setAttribute("class", "card");
+                // cardContainer.classList.add("d-inline");
+
+                const cardRow = document.createElement("div");
+                cardRow.setAttribute("class", "row");
+                cardRow.classList.add("g-0");
+
+                const column1 = document.createElement("div");
+                column1.setAttribute("class", "col-lg-4");
+
+
+                const imageBG = document.createElement("div");
+                imageBG.setAttribute("class", "img-bg");
+                // imageBG.classList.add("d-inline");
 
                 const cardImage = document.createElement("img");
                 cardImage.setAttribute("src", product.image);
                 cardImage.setAttribute("alt", "picture of the product");
+                // cardImage.classList.add("d-inline");
+
+                const column2 = document.createElement("div");
+                column2.setAttribute("class", "col-lg-8");
 
                 const cardBody = document.createElement("div");
                 cardBody.setAttribute("class", "card-body");
+                // cardBody.classList.add("d-inline");
 
                 const cardTitle = document.createElement("h5");
                 cardTitle.setAttribute("class", "card-title");
+                // cardTitle.classList.add("d-inline");
                 cardTitle.innerText = product.title;
-
-                const cardDescription = document.createElement("p");
-                cardDescription.setAttribute("class", "card-text");
-                cardDescription.innerText = product.description;
 
                 const cardPrice = document.createElement("p");
                 cardPrice.setAttribute("class", "card-price");
-                cardPrice.innerText = product.price + " €";
+                cardPrice.classList.add("lead");
+                cardPrice.innerText = product.price.toFixed(2) + " €";
+
+                const cardDescription = document.createElement("p");
+                cardDescription.setAttribute("class", "card-text");
+                // cardDescription.classList.add("d-inline");
+                cardDescription.innerText = product.description;
+
+                const cardStars = document.createElement("p");
+                cardStars.setAttribute("class", "stars-rate");
+                cardStars.innerText = countStars(product);
+
+                const cardRate = document.createElement("p");
+                cardRate.setAttribute("class", "text-body-secondary");
+                // cardDescription.classList.add("d-inline");
+                cardRate.innerText = "Rate: " + product.rating.rate + " | " + "Count: " +  product.rating.count;
+                
+                const cartButton = document.createElement("button");
+                cartButton.setAttribute("type", "button");
+                cartButton.setAttribute("class", "btn");
+                cartButton.classList.add("btn-warning");
+                cartButton.classList.add("cart-button");
+                cartButton.innerText = "Add to cart";
+
+                
                 
                 //append elements to correspondent containers
-                cardContainer.appendChild(cardImage); 
-                cardContainer.appendChild(cardBody);
+                cardContainer.appendChild(cardRow);
+                cardRow.appendChild(column1);
+                column1.appendChild(imageBG);
+                imageBG.appendChild(cardImage);
+                cardRow.appendChild(column2);
+                column2.appendChild(cardBody); 
                 cardBody.appendChild(cardTitle);
-                cardBody.appendChild(cardDescription);
                 cardBody.appendChild(cardPrice);
+                cardBody.appendChild(cardDescription);
+                cardBody.appendChild(cardStars);
+                cardBody.appendChild(cardRate);
+                cardBody.appendChild(cartButton);
+                
                 cardsContainer.appendChild(cardContainer); 
           
         });
@@ -92,6 +138,7 @@ function getData() {
 
     //Dropdown eventListener
     const setEventListeners = (products) => {
+        //Category dropdown eventLstener
         const categoryDropdown = document.querySelector("#categoryDropdown");
         categoryDropdown.addEventListener("change", (event) => {
             // console.log("option selected", event.target.value);
@@ -163,3 +210,11 @@ function getData() {
 };
         
 getData();
+
+function countStars (product) {
+    let intRate = parseInt(product.rating.rate);
+    // let starCode = "⭐️";
+    let fullStar = "★";
+    let emptyStar = "☆";
+    return fullStar.repeat(intRate) + emptyStar.repeat(5 - intRate);
+}

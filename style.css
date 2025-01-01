@@ -73,42 +73,133 @@ nav a {
     margin: 0 auto;
 }
 
-/* Cards */
-.card {
-    max-height: 350px;
-    overflow:scroll;
-    background-color: var(--fast-white);
-    border: solid 10px #7950f2 ;
-    margin: 10px;
-}
 
 /* Search Page */
-/* Search Field */
-#product-search {
+/* Grid Layout */
+.header { grid-area: header; }
+.topbar { grid-area: topbar; }
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.footer { grid-area: footer; }
+
+.search-body {
+    display: grid;
+    grid-template-areas: 
+    'header header header header'
+    'topbar topbar topbar topbar'
+    'sidebar main main main'
+    'footer footer footer footer'
+}
+
+/* Topbar */
+.topbar {
+    text-align: left;
+    padding: 0 0 0 20px;
+    width: 100%;
+    height: 60px;
+    align-content: center;
+    background-color: #7950f2;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 300px;
+    float: left;
+    padding: 60px 20px 0px 0px;
+    background-color: #cac0e6;
+}
+
+/* Search */
+.search {
     margin: 20px;
+}
+
+#product-search {
     width: 250px;
-    display: inline-block;
+    display: block;
 }
 
 /* Dropdown Box */
-.container {
-    text-align: center;
-    margin: 20px;
-    margin-bottom: 40px;
-    display: inline-block;
-}
-
 .dropdown {
-    margin-inline: 10px;
-    display: inline-block;
+    margin: 20px;
+    display: block;
 }
 
 /* Price Checkboxes */
-
 .price-checkboxes {
     text-align: center;
     margin: 20px;
     display: block;
     text-align: left;
+}
+
+
+/* Main */
+
+.main {
+    display: block;
+}
+
+.product-display {
+    /* float: left; */
+    margin-inline: 10px;
+    width: 100%;
+    padding: 20px;
+    display: block;
+    text-align: center;
+    
+}
+
+/* Cards */
+.card {
+    max-width: 95%;
+    min-height: 250px;
+    background-color: white;
+    /* border: solid 10px #7950f2 ; */
+    margin: 20px;
+    margin-bottom: 0px;
+    
+}
+
+.img-bg {
+    /* object-fit: contain; */
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 100%;
+    display: inline-flex;
+    align-content: center;
+    background-color: white;
+    padding: 0rem;
+}
+
+.img-bg > img  {
+    object-fit: contain;
+    width: auto;
+    min-height: 250px;
+    max-height: 250px;
+    /* display: inline; */
+    padding: 5px;
+    overflow: hidden;
+}
+
+.card-body {
+    display: block;
+    text-align: left;
+}
+
+.card.price {
+    font-size: 2rem !important;
+}
+
+.stars-rate {
+    color: rgb(234, 152, 0) !important;
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.cart-button {
+    float: right;
+    margin-bottom: 20px;
 }
 

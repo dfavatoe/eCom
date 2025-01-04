@@ -1,0 +1,27 @@
+.carousel-item {
+    height: 80vh;
+    /* object-fit:contain; */
+}
+
+.carousel-item > img {
+    /* position: absolute; */
+
+    align-items: center;
+    /* width: 100vw; */
+    height: 80vh;
+    object-fit: cover;
+
+}
+
+#ca1-p1 {
+  /* object-position: 0 -25vh; */
+  /* transform: translateY(-25px); */
+}
+
+#ca1-p2 {
+    object-position: 0 0px;
+}
+    
+#ca1-p3 {
+    /* object-position: 0 -80px; */
+}

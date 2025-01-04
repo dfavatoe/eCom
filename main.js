@@ -100,7 +100,7 @@ function getData() {
           
         });
     }
-    
+
 
     //* 3. Generate Dropdown Filter options
         const createDropdown = (products) => {
@@ -138,7 +138,7 @@ function getData() {
 
     //Dropdown eventListener
     const setEventListeners = (products) => {
-        //Category dropdown eventLstener
+        //Category dropdown eventListener
         const categoryDropdown = document.querySelector("#categoryDropdown");
         categoryDropdown.addEventListener("change", (event) => {
             // console.log("option selected", event.target.value);
@@ -165,6 +165,28 @@ function getData() {
                 
             });
         });
+
+        // Sort eventListeners
+        //select button
+        const sortButton = document.getElementById("sort-button");
+        //create a NodeList of the sort options 
+        const sortOptions = document.querySelectorAll(".sort-item");
+        console.log("sortOptions: ", sortOptions);
+
+        // when "clicking" an option change the button's name as the selected option and trigger combinedFilters().
+        sortOptions.forEach((option) => {
+            option.addEventListener("click", (e) => {
+                // change button's name to the selected option's name
+                sortButton.innerText = e.target.innerText;
+                const sortButtonText =  sortButton.innerText;
+                // console.log("sortButtonText: ", sortButtonText);
+                const selectedOption = e.target.dataset.sort;
+                console.log("selectedOption: ", selectedOption);
+                combinedFilters(products);
+
+            })
+            console.log("sortButton: ", sortButton.innerText);
+        })
     }
     
 
@@ -197,6 +219,12 @@ function getData() {
         const pattern = new RegExp(searchedTitle, "i");
         // console.log("categoryDropdownValue, searchedTitleValue: ", selectedCategory, searchedTitle);
 
+        //get sort value
+        const sortButton = document.getElementById("sort-button");
+        const sortButtonText = sortButton.innerText;
+        console.log("sortButtonText: ", sortButtonText);
+
+ 
         //return a filtered array based on the conditions established in the block
         const filteredProducts = products.filter((product) => {
             return  (selectedCategory === product.category || selectedCategory === "all") && (pattern.test(product.title))
@@ -204,16 +232,35 @@ function getData() {
             
         })
 
-        displayProducts(filteredProducts);
+        displayProducts(sortedProducts(filteredProducts, sortButtonText));
     };
+
+    
     
 };
         
 getData();
 
+//* Helper Functions
+
+function sortedProducts (filteredProducts, sortButtonText) {
+    if (sortButtonText === "Sort products") {
+        return filteredProducts; 
+    } else {
+        return filteredProducts.sort((a, b) => {
+            if (sortButtonText === "Price Ascending") {
+                return a.price - b.price;
+            } else if (sortButtonText === "Price Descending") {
+                return b.price - a.price;
+            } else if (sortButtonText === "Rating") {
+                return b.rating.rate - a.rating.rate;
+            }
+        });
+    }
+}
+
 function countStars (product) {
     let intRate = parseInt(product.rating.rate);
-    // let starCode = "⭐️";
     let fullStar = "★";
     let emptyStar = "☆";
     return fullStar.repeat(intRate) + emptyStar.repeat(5 - intRate);

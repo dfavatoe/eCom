@@ -7,23 +7,35 @@
 :root {
     --primary: #ffd43b;
     --secondary: #7950f2;
+    /* --electric-violet: #8f00ff; */
+    --electric-violet: #8000e2;
+    --veronica: #A020F0;
     --fast-white: rgb(233, 232, 232);
+    --old-star: #ff9900;
+    --electric-yellow: #ffe700;
+    
+
 }
 
 h1 {
-    color: var(--secondary);
+    font-family: 'Poppins', sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+    color: var(--electric-violet);
     text-align: center;
     margin: 40px;
-    /* 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
+}
+
+h5 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
 }
 
 /* Navbar */
 nav {
-    background-color: var(--secondary);
+    /* background-color: var(--electric-violet); */
+    background-color: var(--electric-violet);
     list-style-type: none;
     margin: 0;
     overflow: hidden;
@@ -31,7 +43,7 @@ nav {
 }
 
 nav a {
-    color: var(--primary);
+    color: var(--electric-yellow);
     float: right;
     display: block;
     font-family: 'Poppins', sans-serif;
@@ -42,13 +54,14 @@ nav a {
 
 /* Intro Text */
 .intro-text{
-    background-color: var(--secondary);
+    /* background-color: var(--secondary); */
+    background-image: radial-gradient(circle, var(--veronica), var(--electric-violet));
     text-justify: inter-word;
     padding: 20px;
 }
 
 .intro-text :first-child{
-    color: var(--primary);
+    color: var(--electric-yellow);
     margin-left: 15%;
     margin-right: 15%;
     text-align: center;
@@ -93,20 +106,32 @@ nav a {
 
 /* Topbar */
 .topbar {
-    text-align: left;
-    padding: 0 0 0 20px;
+    text-align: right;
+    padding: 0 60px 0 ;
     width: 100%;
     height: 60px;
     align-content: center;
-    background-color: #7950f2;
+    background-color: var(--electric-violet);
 }
+
+#sort-button {
+    width: 150px;
+    text-align: right;
+    font-weight: bold;
+}
+
+#sort-dropdown {
+    text-align: right;
+}
+
 
 /* Sidebar */
 .sidebar {
     width: 300px;
     float: left;
-    padding: 60px 20px 0px 0px;
+    padding: 160px 20px 0px 0px;
     background-color: #cac0e6;
+    
 }
 
 /* Search */
@@ -137,7 +162,9 @@ nav a {
 /* Main */
 
 .main {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .product-display {
@@ -193,7 +220,7 @@ nav a {
 }
 
 .stars-rate {
-    color: rgb(234, 152, 0) !important;
+    color: var(--old-star) !important;
     font-size: 1.2em;
     margin: 0;
 }

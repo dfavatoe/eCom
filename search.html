@@ -4,12 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>eCom Shop_Search</title>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link
             href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
             rel="stylesheet">
+
     <!-- Bootstrap -->
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/footers/">
     <link
@@ -18,8 +20,11 @@
     />
     <link rel="stylesheet" href="c_style.css">
     <link rel="stylesheet" href="footers.css">
+
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="carousel.css">
+
     <!-- Icons -->
     <script src="https://kit.fontawesome.com/218aa90603.js" crossorigin="anonymous"></script>
   </head>
@@ -38,7 +43,7 @@
     
           <!-- Carousel -->
           <div id="carouselExampleAutoplaying" class="carousel  carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-inner">
+            <div class="carousel-inner" style="height: 75vh;">
               <div class="carousel-item active">
                 <img src="./img/electronics_3.jpg" class="d-block w-100" alt="picture of an Iphone over the desk">
               </div>
@@ -47,7 +52,7 @@
                 <img src="./img/electronics_2.jpg" class="d-block w-100" alt="picture of a macbook air">
               </div>
               <div class="carousel-item">
-                <img src="./img/mens_clothes_1.jpg" class="d-block w-100" alt="top shot of men's clothes">
+                <img src="./img/mens_clothes_4.jpg" class="d-block w-100" alt="top shot of men's clothes">
               </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -59,18 +64,15 @@
               <span class="visually-hidden">Next</span>
             </button>
         </div>
-        
       </header>
 
+      <!-- Topbar -->
       <div class="topbar">
         <!-- Sort Button -->
-        <button type="button" class="sort-button btn btn-secondary dropdown-toggle expanded-uppercase show" data-bs-toggle="dropdown" aria-expanded="false">
+        <button type="button" class="sort-btn btn btn-light btn-sm dropdown-toggle expanded-uppercase show" id="sort-button" data-bs-toggle="dropdown" aria-expanded="false">
           Sort products
         </button>
-        <ul id="sort-dropdown" class="dropdown-menu" data-popper-placement="bottom-start">
-          <li>
-            <span data-sort="title-az" id="sort-alphabet" class="dropdown-item sort-item">Alphabetically</span>
-          </li>
+        <ul id="sort-dropdown" class="dropdown-menu dropdown-menu-end" data-popper-placement="bottom-start">
           <li>
             <span data-sort="price-asc" id="sort-price-asc" class="dropdown-item sort-item">Price Ascending</span>
           </li>
@@ -84,6 +86,7 @@
 
       </div>
   
+      <!-- Sidebar -->
       <sidebar class="sidebar">
         
           <!-- Search Field -->
@@ -98,8 +101,6 @@
             value=""
             >
           </div>
-          
-        
   
           <!-- Category Dropdown-->
           <div class="dropdown">
@@ -127,24 +128,25 @@
   
       </sidebar>
       
+       <!-- Main -->
       <main>
         <div class="main">
           <h1>Products</h1>
+
           <!-- Product's Display -->
           <div class="product-display">
             <div class="row"></div>
           </div>
         </div>
-
-
+      </main>
        
       <div class="footer">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center p-3 my-0 border-top">
           <div class="col-md-4 d-flex align-items-center">
             <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
               <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
             </a>
-            <span class="text-muted">&copy; 2021 Company, Inc</span>
+            <span class="text-muted">&copy; 2025 eCom, Inc</span>
           </div>
     
           <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">

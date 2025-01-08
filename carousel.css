@@ -1,5 +1,5 @@
 .carousel-item {
-    height: 80vh;
+    height: 78vh;
     /* object-fit:contain; */
 }
 
@@ -13,15 +13,7 @@
 
 }
 
-#ca1-p1 {
-  /* object-position: 0 -25vh; */
-  /* transform: translateY(-25px); */
-}
-
 #ca1-p2 {
     object-position: 0 0px;
-}
     
-#ca1-p3 {
-    /* object-position: 0 -80px; */
 }

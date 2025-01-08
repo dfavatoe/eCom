@@ -33,24 +33,45 @@ h5 {
 }
 
 /* Navbar */
-nav {
+.navbar {
+    padding: 0px;
+}
+
+.container-fluid {
     /* background-color: var(--electric-violet); */
     background-color: var(--electric-violet);
     list-style-type: none;
     margin: 0;
     overflow: hidden;
-    padding: 0;
+    padding: 10px 40px;
 }
 
-nav a {
+.navbar-brand {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    color: var(--electric-yellow);
+}
+
+.navbar-nav > a {
     color: var(--electric-yellow);
     float: right;
     display: block;
     font-family: 'Poppins', sans-serif;
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
 }
+
+#active-btn {
+    color: white;
+    font-weight: bold;
+}
+
+.navbar-brand:hover, 
+.nav-link:hover,
+.active-btn:hover {
+    color: white;
+}
+
+
 
 /* Intro Text */
 .intro-text{

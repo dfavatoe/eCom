@@ -23,7 +23,6 @@ function getData() {
             
                 const cardContainer = document.createElement("div");
                 cardContainer.setAttribute("class", "card");
-                // cardContainer.classList.add("d-inline");
 
                 const cardRow = document.createElement("div");
                 cardRow.setAttribute("class", "row");
@@ -35,23 +34,19 @@ function getData() {
 
                 const imageBG = document.createElement("div");
                 imageBG.setAttribute("class", "img-bg");
-                // imageBG.classList.add("d-inline");
 
                 const cardImage = document.createElement("img");
                 cardImage.setAttribute("src", product.image);
                 cardImage.setAttribute("alt", "picture of the product");
-                // cardImage.classList.add("d-inline");
 
                 const column2 = document.createElement("div");
                 column2.setAttribute("class", "col-lg-8");
 
                 const cardBody = document.createElement("div");
                 cardBody.setAttribute("class", "card-body");
-                // cardBody.classList.add("d-inline");
 
                 const cardTitle = document.createElement("h5");
                 cardTitle.setAttribute("class", "card-title");
-                // cardTitle.classList.add("d-inline");
                 cardTitle.innerText = product.title;
 
                 const cardPrice = document.createElement("p");
@@ -61,7 +56,6 @@ function getData() {
 
                 const cardDescription = document.createElement("p");
                 cardDescription.setAttribute("class", "card-text");
-                // cardDescription.classList.add("d-inline");
                 cardDescription.innerText = product.description;
 
                 const cardStars = document.createElement("p");
@@ -70,7 +64,6 @@ function getData() {
 
                 const cardRate = document.createElement("p");
                 cardRate.setAttribute("class", "text-body-secondary");
-                // cardDescription.classList.add("d-inline");
                 cardRate.innerText = "Rate: " + product.rating.rate + " | " + "Count: " +  product.rating.count;
                 
                 const cartButton = document.createElement("button");
@@ -258,6 +251,8 @@ function sortedProducts (filteredProducts, sortButtonText) {
         });
     }
 }
+
+
 
 function countStars (product) {
     let intRate = parseInt(product.rating.rate);

@@ -31,12 +31,21 @@
 
   <body>
     <!-- Navbar -->
-      <nav>
-        <a href="contact.html">Contact</a>
-        <a href="search.html">Search</a>
-        <a href="register.html">Register</a>
-        <a href="index.html">Home</a>
-        <a style="float: left;" href="index.html"><b>eCOM</b></a>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">eCom</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link active" id="active-btn" aria-current="page" href="index.html">Home</a>
+            <a class="nav-link" href="#">Register</a>
+            <a class="nav-link" href="search.html">Search</a>
+            <a class="nav-link" href="#">Contact</a>
+          </div>
+        </div>
+      </div>
     </nav>
 
     <!-- Carousel -->
